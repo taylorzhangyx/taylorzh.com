@@ -17,5 +17,5 @@ func main() {
 			"message": "pong",
 		})
 	})
-	server.Run(":8080")
+	server.Run(":8020")
 }
