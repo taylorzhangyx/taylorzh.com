@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Visit count is <span class="badge badge-secondary">{{count}}</span></h1>
+
+        <a class="badge badge-pill badge-success" href="{{url_for('index')}}">return</a>
+
+    </div>
+</div>
+{% endblock %}
