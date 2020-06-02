@@ -17,5 +17,22 @@ func main() {
 			"message": "pong",
 		})
 	})
-	server.Run(":8020")
+
+	server.POST("values", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"index": 2233,
+		})
+	})
+
+	server.GET("values/current", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"values": []int{9990, 123, 121, 144},
+		})
+	})
+
+	server.GET("values/all", func(c *gin.Context) {
+		c.JSON(200, []string{"1000", "222"})
+	})
+
+	server.Run(":8080")
 }

@@ -22,6 +22,6 @@ def index():
 
 @app.route("/count")
 def count():
-    res = requests.get("http://localhost:8080")
+    res = requests.get("http://server-gin:8080")
     obj = json.loads(res.text)
     return render_template("count.html", count=obj["count"])
