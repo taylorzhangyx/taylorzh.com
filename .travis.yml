@@ -19,13 +19,13 @@ after_success:
   - docker build -t taylorzh/client-flask ./client-flask
 
 # Log in to the docker CLI
-#   - echo "$DOCKER_PASSWORD" | docker login -u  "$DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PWD" | docker login -u  "$DOCKER_ID" --password-stdin
 
-# # Take those images and push them to AWS EB
-#   - docker push taylorzhangyx/multi-client
-#   - docker push taylorzhangyx/multi-nginx
-#   - docker push taylorzhangyx/multi-server
-#   - docker push taylorzhangyx/multi-worker
+# # Take those images and push them to DOCKER HUB
+  - docker push taylorzh/client-react
+  - docker push taylorzh/nginx
+  - docker push taylorzh/server-gin
+  - docker push taylorzh/client-flask
 
 # deploy:
 #   provider: elasticbeanstalk
