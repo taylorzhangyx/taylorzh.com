@@ -13,19 +13,19 @@ script:
   - docker run taylorzh/server-gin go test ./...
 
 after_success:
-  - docker build -t taylorzh/client-react ./client-react
-  - docker build -t taylorzh/nginx ./nginx
-  - docker build -t taylorzh/server-gin ./server-gin
-  - docker build -t taylorzh/client-flask ./client-flask
+  - docker build -t taylorzhangyx/zhangyx.com-client-react ./client-react
+  - docker build -t taylorzhangyx/zhangyx.com-nginx ./nginx
+  - docker build -t taylorzhangyx/zhangyx.com-server-gin ./server-gin
+  - docker build -t taylorzhangyx/zhangyx.com-client-flask ./client-flask
 
 # Log in to the docker CLI
   - echo "$DOCKER_PWD" | docker login -u  "$DOCKER_ID" --password-stdin
 
 # # Take those images and push them to DOCKER HUB
-  - docker push taylorzhangyx/client-react
-  - docker push taylorzhangyx/nginx
-  - docker push taylorzh/server-gin
-  - docker push taylorzh/client-flask
+  - docker push taylorzhangyx/zhangyx.com-client-react
+  - docker push taylorzhangyx/zhangyx.com-nginx
+  - docker push taylorzhangyx/zhangyx.com-server-gin
+  - docker push taylorzhangyx/zhangyx.com-client-flask
 
 # deploy:
 #   provider: elasticbeanstalk
