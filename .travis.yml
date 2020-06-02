@@ -22,8 +22,8 @@ after_success:
   - echo "$DOCKER_PWD" | docker login -u  "$DOCKER_ID" --password-stdin
 
 # # Take those images and push them to DOCKER HUB
-  - docker push taylorzh/client-react
-  - docker push taylorzh/nginx
+  - docker push taylorzhangyx/client-react
+  - docker push taylorzhangyx/nginx
   - docker push taylorzh/server-gin
   - docker push taylorzh/client-flask
 
