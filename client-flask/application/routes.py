@@ -12,15 +12,15 @@ from flask import (
 import requests
 
 
-@app.route("/", methods=["GET"])
-@app.route("/index", methods=["GET"])
-@app.route("/home", methods=["GET"])
+@app.route("/flask/", methods=["GET"])
+@app.route("/flask/index", methods=["GET"])
+@app.route("/flask/home", methods=["GET"])
 def index():
     print("wow!")
     return render_template("index.html")
 
 
-@app.route("/count")
+@app.route("/flask/count")
 def count():
     res = requests.get("http://server-gin:8080")
     obj = json.loads(res.text)

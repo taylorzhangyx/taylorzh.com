@@ -26,12 +26,15 @@ func main() {
 
 	server.GET("values/current", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"values": []int{9990, 123, 121, 144},
+			"1": 1,
+			"2": 2,
+			"3": 3,
+			"4": 5,
 		})
 	})
 
 	server.GET("values/all", func(c *gin.Context) {
-		c.JSON(200, []string{"1000", "222"})
+		c.JSON(200, []int{2, 3, 4, 5})
 	})
 
 	server.Run(":8080")
