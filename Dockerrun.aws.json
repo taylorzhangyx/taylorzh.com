@@ -1,0 +1,43 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+        {
+            "name": "client-react",
+            "image": "taylorzhangyx/zhangyx.com-client-react",
+            "hostname": "client-react",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "server-gin",
+            "image": "taylorzhangyx/multi-server",
+            "hostname": "server-gin",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "client-flask",
+            "image": "taylorzhangyx/zhangyx.com-client-flask",
+            "hostname": "client-flask",
+            "essential": false,
+            "memory": 128
+        },
+        {
+            "name": "nginx",
+            "image": "taylorzhangyx/zhangyx.com-nginx",
+            "essential": true,
+            "portMappings": [
+                {
+                    "hostPort": 80,
+                    "containerPort": 80
+                }
+            ],
+            "links": [
+                "client-react",
+                "client-flask",
+                "server-gin"
+            ],
+            "memory": 128
+        }
+    ]
+}

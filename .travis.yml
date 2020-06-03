@@ -27,16 +27,14 @@ after_success:
   - docker push taylorzhangyx/zhangyx.com-server-gin
   - docker push taylorzhangyx/zhangyx.com-client-flask
 
-# deploy:
-#   provider: elasticbeanstalk
-#   region: "us-west-1"
-#   app: "multi-docker"
-#   env: "MultiDocker-env"
-#   bucket_name: "elasticbeanstalk-us-west-1-167789202206"
-#   bucket_path: "docker-multi"
-#   access_key_id:
-#     secure: "$AWS_ACCESS_KEY"
-#   secret_access_key:
-#     secure: "$AWS_SECRET_KEY"
-#   on:
-#     branch: master
+deploy:
+    provider: elasticbeanstalk
+    region: "us-west-1"
+    app: "taylorzh"
+    env: "MultiDocker-env"
+    bucket_name: "elasticbeanstalk-us-west-1-910566399270"
+    bucket_path: "taylorzhcom"
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
+    on:
+        branch: master
