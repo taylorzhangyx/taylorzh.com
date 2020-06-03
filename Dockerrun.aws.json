@@ -6,21 +6,21 @@
             "image": "taylorzhangyx/zhangyx.com-client-react",
             "hostname": "client-react",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "server-gin",
-            "image": "taylorzhangyx/multi-server",
+            "image": "taylorzhangyx/zhangyx.com-server-gin",
             "hostname": "server-gin",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "client-flask",
             "image": "taylorzhangyx/zhangyx.com-client-flask",
             "hostname": "client-flask",
             "essential": false,
-            "memory": 128
+            "memory": 256
         },
         {
             "name": "nginx",
