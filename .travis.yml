@@ -31,7 +31,7 @@ deploy:
     provider: elasticbeanstalk
     region: "us-west-1"
     app: "taylorzh"
-    env: "MultiDocker-env"
+    env: "Taylorzh-env"
     bucket_name: "elasticbeanstalk-us-west-1-910566399270"
     bucket_path: "taylorzhcom"
     access_key_id: $AWS_ACCESS_KEY
