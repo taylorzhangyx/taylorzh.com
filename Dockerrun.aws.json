@@ -16,13 +16,6 @@
             "memory": 256
         },
         {
-            "name": "client-flask",
-            "image": "taylorzhangyx/zhangyx.com-client-flask",
-            "hostname": "client-flask",
-            "essential": false,
-            "memory": 256
-        },
-        {
             "name": "nginx",
             "image": "taylorzhangyx/zhangyx.com-nginx",
             "essential": true,

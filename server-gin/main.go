@@ -18,24 +18,5 @@ func main() {
 		})
 	})
 
-	server.POST("values", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"index": 2233,
-		})
-	})
-
-	server.GET("values/current", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"1": 1,
-			"2": 2,
-			"3": 3,
-			"4": 5,
-		})
-	})
-
-	server.GET("values/all", func(c *gin.Context) {
-		c.JSON(200, []int{2, 3, 4, 5})
-	})
-
 	server.Run(":8080")
 }

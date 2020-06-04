@@ -34,8 +34,8 @@ services:
             dockerfile: Dockerfile.dev
             context: ./client-react
         volumes:
-            - /app/node_modules
-            - ./client-react:/app
+            - /usr/src/app/node_modules
+            - ./client-react:/usr/src/app
 
     client-flask:
         build:
@@ -52,3 +52,4 @@ services:
             context: ./nginx
         ports:
             - '22333:80'
+            - '3001:3001'
