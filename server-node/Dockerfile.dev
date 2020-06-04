@@ -4,4 +4,4 @@ COPY ./package.json ./
 RUN npm install
 COPY . .
 RUN npm run build
-CMD npm run watch-debug
+CMD npm run watch-debug | npm run watch-test
