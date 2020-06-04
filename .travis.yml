@@ -5,7 +5,9 @@ services:
 before_install:
   # - docker build -t taylorzhangyx/client-react -f ./client-react/Dockerfile.dev ./client-react
   # - docker build -t taylorzhangyx/client-flask -f ./client-flask/Dockerfile.dev ./client-flask
-  - docker build -t taylorzhangyx/server-node -f ./server-node/Dockerfile.dev ./server-node
+  - cd server-node
+  - docker build -t taylorzhangyx/server-node -f ./Dockerfile.dev .
+  - cd ..
   - docker build -t taylorzhangyx/server-gin -f ./server-gin/Dockerfile.dev ./server-gin
 
 script:
