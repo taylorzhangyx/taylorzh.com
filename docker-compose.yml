@@ -1,11 +1,15 @@
 version: "3"
 services:
     mongo:
-        image: "mongo:3.6"
+        image: "mongo:4.2"
         restart: always
+        ports:
+            - '27017:27017'
         environment:
             MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: example
+            MONGO_INITDB_ROOT_PASSWORD: rootpassword
+        volumes:
+            - 'mongo:/data/db'
 
     redis:
         restart: always
@@ -20,30 +24,38 @@ services:
             - ./server-gin:/go/src/app
         environment:
             - REDIS_HOST=redis
-            - REDIS_PORT=
+            - REDIS_PORT=6379
             - PGUSER=postgres
             - PGHOST=postgres
             - PGDATABASE=postgres
             - PGPASSWORD=postgres_password
             - PGPORT=5432
 
-    client-react:
+    server-node:
         restart: always
-        stdin_open: true
+        depends_on:
+            - 'mongo'
         build:
             dockerfile: Dockerfile.dev
-            context: ./client-react
+            context: ./server-node
         volumes:
-            - /usr/src/app/node_modules
-            - ./client-react:/usr/src/app
+            - /app/node_modules
+            - ./server-node:/app
+        environment:
+            - REDIS_HOST=redis
+            - REDIS_PORT=6379
+            - MONGODB_URI_LOCAL=mongodb://root:rootpassword@mongo:27017/admin
 
-    client-flask:
-        build:
-            dockerfile: Dockerfile.dev
-            context: ./client-flask
-        volumes:
-            - /app/taylorzh-venv
-            - ./client-flask:/app
+    # client-react:
+    #     restart: always
+    #     stdin_open: true
+    #     build:
+    #         dockerfile: Dockerfile.dev
+    #         context: ./client-react
+    #     volumes:
+    #         - /usr/src/app/node_modules
+    #         - ./client-react:/usr/src/app
+
 
     nginx:
         restart: always
@@ -52,4 +64,5 @@ services:
             context: ./nginx
         ports:
             - '22333:80'
-            - '3001:3001'
+volumes:
+    mongo:
