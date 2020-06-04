@@ -2,9 +2,9 @@
     "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {
-            "name": "client-react",
-            "image": "taylorzhangyx/zhangyx.com-client-react",
-            "hostname": "client-react",
+            "name": "server-node",
+            "image": "taylorzhangyx/zhangyx.com-server-node",
+            "hostname": "server-node",
             "essential": false,
             "memory": 256
         },
@@ -26,9 +26,8 @@
                 }
             ],
             "links": [
-                "client-react",
-                "client-flask",
-                "server-gin"
+                "server-gin",
+                "server-node"
             ],
             "memory": 128
         }

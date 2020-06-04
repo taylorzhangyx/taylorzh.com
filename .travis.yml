@@ -3,29 +3,30 @@ services:
   - docker
 
 before_install:
-  - docker build -t taylorzh/client-react -f ./client-react/Dockerfile.dev ./client-react
-  - docker build -t taylorzh/client-flask -f ./client-flask/Dockerfile.dev ./client-flask
-  - docker build -t taylorzh/server-gin -f ./server-gin/Dockerfile.dev ./server-gin
+  # - docker build -t taylorzhangyx/client-react -f ./client-react/Dockerfile.dev ./client-react
+  # - docker build -t taylorzhangyx/client-flask -f ./client-flask/Dockerfile.dev ./client-flask
+  - docker build -t taylorzhangyx/server-node -f ./server-node/Dockerfile.dev ./server-node
+  - docker build -t taylorzhangyx/server-gin -f ./server-gin/Dockerfile.dev ./server-gin
 
 script:
-  - docker run -e CI=true taylorzh/client-react npm test
-  - docker run taylorzh/client-flask pytest
-  - docker run taylorzh/server-gin go test ./...
+  # - docker run -e CI=true taylorzh/client-react npm test
+  # - docker run taylorzh/client-flask pytest
+  - docker run taylorzhangyx/server-gin go test ./...
+  - docker run taylorzhangyx/server-node npm run test
 
 after_success:
-  - docker build -t taylorzhangyx/zhangyx.com-client-react ./client-react
   - docker build -t taylorzhangyx/zhangyx.com-nginx ./nginx
   - docker build -t taylorzhangyx/zhangyx.com-server-gin ./server-gin
-  - docker build -t taylorzhangyx/zhangyx.com-client-flask ./client-flask
+  - docker build -t taylorzhangyx/zhangyx.com-server-node ./server-node
 
 # Log in to the docker CLI
   - echo "$DOCKER_PWD" | docker login -u  "$DOCKER_ID" --password-stdin
 
 # # Take those images and push them to DOCKER HUB
-  - docker push taylorzhangyx/zhangyx.com-client-react
+  # - docker push taylorzhangyx/zhangyx.com-client-react
   - docker push taylorzhangyx/zhangyx.com-nginx
   - docker push taylorzhangyx/zhangyx.com-server-gin
-  - docker push taylorzhangyx/zhangyx.com-client-flask
+  - docker push taylorzhangyx/zhangyx.com-server-node
 
 deploy:
     provider: elasticbeanstalk
