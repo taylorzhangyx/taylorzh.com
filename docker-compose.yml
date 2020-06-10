@@ -1,6 +1,5 @@
 version: "3"
 services:
-
     server-gin:
         restart: always
         build:
@@ -11,11 +10,6 @@ services:
         environment:
             - REDIS_HOST=redis
             - REDIS_PORT=6379
-            - PGUSER=postgres
-            - PGHOST=postgres
-            - PGDATABASE=postgres
-            - PGPASSWORD=postgres_password
-            - PGPORT=5432
 
     client-angular:
         restart: always
