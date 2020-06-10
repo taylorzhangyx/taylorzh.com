@@ -1,19 +1,5 @@
 version: "3"
 services:
-    mongo:
-        image: "mongo:4.2"
-        restart: always
-        ports:
-            - '27017:27017'
-        environment:
-            MONGO_INITDB_ROOT_USERNAME: root
-            MONGO_INITDB_ROOT_PASSWORD: rootpassword
-        volumes:
-            - 'mongo:/data/db'
-
-    redis:
-        restart: always
-        image: "redis:6"
 
     server-gin:
         restart: always
@@ -31,21 +17,6 @@ services:
             - PGPASSWORD=postgres_password
             - PGPORT=5432
 
-    server-node:
-        restart: always
-        depends_on:
-            - 'mongo'
-        build:
-            dockerfile: Dockerfile.dev
-            context: ./server-node
-        volumes:
-            - /app/node_modules
-            - ./server-node:/app
-        environment:
-            - REDIS_HOST=redis
-            - REDIS_PORT=6379
-            - MONGODB_URI_LOCAL=mongodb://root:rootpassword@mongo:27017/admin
-
     client-angular:
         restart: always
         stdin_open: true
@@ -54,7 +25,7 @@ services:
             context: ./client-angular
         volumes:
             - /usr/src/app/node_modules
-            - ./client-angular://usr/share/nginx/html
+            - ./client-angular:/app
 
     nginx:
         restart: always
