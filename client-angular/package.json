@@ -42,6 +42,7 @@
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "ngx-deploy-docker": "0.0.5",
+    "popper.js": "^1.16.1",
     "ramda": "^0.27.0",
     "rxjs": "^6.5.4",
     "tslib": "^1.10.1",
