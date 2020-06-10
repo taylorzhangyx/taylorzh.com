@@ -10,4 +10,4 @@ script:
   # - docker run -e CI=true taylorzh/client-react npm test
   # - docker run taylorzh/client-flask pytest
   - docker run taylorzhangyx/server-gin go test ./...
-  - docker run taylorzhangyx/client-angular npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+  - docker run taylorzhangyx/client-angular npm run test:ci
