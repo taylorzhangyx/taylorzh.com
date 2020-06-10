@@ -1,0 +1,11 @@
+FROM node:alpine
+LABEL version="0.1.0"
+
+WORKDIR /app
+# RUN npm install -g @angular/cli
+# RUN npm install -g generator-ngx-rocket
+COPY ./package.json .
+COPY ./package-lock.json .
+RUN npm install
+COPY . .
+CMD ["npm", "start"]
