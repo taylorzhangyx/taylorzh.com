@@ -14,7 +14,7 @@ const logger = new Logger('about');
 })
 export class AboutComponent implements OnInit {
   version: string | null = environment.version;
-  v_count: number = 0;
+  v_count = 0;
   constructor(private httpClient: HttpClient) {}
 
   ngOnInit() {
